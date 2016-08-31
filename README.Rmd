@@ -5,7 +5,7 @@ date: "31 August 2016"
 output: html_document
 ---
 
-```{r setup, echo=TRUE}
+```{r question1, echo=TRUE}
 library(readr)
 library(tidyr)
 library(dplyr)
@@ -27,6 +27,12 @@ t.test(x$male, x$female, data = x, paired = FALSE)
 * H0 : the heart rate does not increase with body temperature
 * H1 : the heart rate does increase with body temperature
 
+## Type of data
+* Unpaired, continuous data
+
+## Statistical test
+* Unpaired t-test
+
 ## Test assumptions
 * Comparing two, unpaired groups
 
@@ -38,5 +44,108 @@ p-value = 0.5287
 * p-value>0.05, therefore accept null hypothesis, and reject alternative hypothesis
 
 ```
+```{r}
+```{r question2,echo=TRUE}
+library(tidyr)
+library(dplyr)
+
+# Import data
+q2 <- read.csv("question2.csv")
+q2
+
+# Tidy data
+head(q2)
+y <- xtabs(~sex + handedness + first_stumble + final_position, data = q2)
+y
+
+# Generalised linear model
+z <- glm(sex~., family = binomial(link = "logit"), data = y)
+z
+
+# Statistical test
+
+
+
+
+```
+## Hypotheses
+* H0 : Intoxication did not affect handedness and ataxic walkng
+* H1 : Intoxication did affect handedness and ataxic walking 
+
+## Type of data
+* Categorical, nominal data which is binary
+
+## Statistical test
+*
+
+## Test assumptions
+*
+
+## Test Output
+
+
+## Test conclusion
+```
+
+
+```
+```{r}
+# Import data
+goo <- read.csv("question3.csv")
+goo
+
+# Tidy data
+plot(goo$time ~ goo$run, type ="l", col = 'purple', xlab = 'Run number', ylab = 'Running time(s)')
+lines(goo$calories, col = 'black')
+
+# Statistical test
+runanov <- aov(goo$run ~ goo$time + goo$calories)
+summary(runanov)
+
+```
+## Hypotheses
+* H0 : There is no correlation between number of runs with running time and calories consumed
+* H1 : There is a correlation between number of runs with running time and calories consumed
+
+## Type of data
+* Paired, parametric data of 3groups
+
+## Statistical test
+* Repeated-measures anova
+
+## Test Assumptions
+* data is paired and has 2 independent variables
+
+## Test outcome
+* Df= 1
+* p-value > 0.05
+
+## Test conclusion
+* p-value is > 0.05, therefore accept null hypothesis and reject alternative hypothesis
+
+```{r question4}
+foo <- rnorm(10000, mean = 60, sd = 3) # final mark
+bar <- rnorm(10000, mean = 68, sd = 5) # project mark
+baz <- rep(seq(from = 1997, to = 2006), each = 1) # years
+
+year <- sample(baz, 150, replace = TRUE,
+               prob = c(0.05, 0.05, 0.08, 0.08, 
+                          0.1, 0.13, 0.14, 0.13, 0.12, 0.12))
+project_mark <- sample(bar, 150, replace = TRUE)
+final_mark <- sample(foo, 150, replace = TRUE)
+
+plot_data <- data_frame(year = year,
+                        project_mark = round(project_mark, 1),
+                        final_mark = round(final_mark, 1)) %>%
+arrange(year)
+foo1 <- lm(plot_data$project_mark ~ plot_data$year, data = plot_data)
+summary(foo1)
+
+plot(year, project_mark, xlab = "Year", ylab = "Project mark", pch = 19, main = 'Physiology course marks')
+plot(year, final_mark, xlab = "Year", ylab = "Final mark", main = 'Physiology final marks')
+
+```
+
+
 
 Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
