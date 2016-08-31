@@ -1,0 +1,42 @@
+---
+title: "Question 1"
+author: "Tuwilika Keendjele"
+date: "31 August 2016"
+output: html_document
+---
+
+```{r setup, echo=TRUE}
+library(readr)
+library(tidyr)
+library(dplyr)
+# Import data
+x <- read.csv("question1.csv")
+x
+
+# Tidy data
+x1 <- boxplot(x$male, x$female, data = x, names = c("males", "females"))
+x1
+
+# Statistical test
+t.test(x$male, x$female, data = x, paired = FALSE)
+
+
+
+```
+## Hypotheses
+* H0 : the heart rate does not increase with body temperature
+* H1 : the heart rate does increase with body temperature
+
+## Test assumptions
+* Comparing two, unpaired groups
+
+## Test output
+df = 116
+p-value = 0.5287
+
+## Test interpretation
+* p-value>0.05, therefore accept null hypothesis, and reject alternative hypothesis
+
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.

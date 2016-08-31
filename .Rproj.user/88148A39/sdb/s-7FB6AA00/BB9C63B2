@@ -1,0 +1,23 @@
+{
+    "collab_server" : "",
+    "contents" : "---\ntitle: \"Question 1\"\nauthor: \"Tuwilika Keendjele\"\ndate: \"31 August 2016\"\noutput: html_document\n---\n\n```{r setup, echo=TRUE}\nlibrary(readr)\nlibrary(tidyr)\nlibrary(dplyr)\n# Import data\nx <- read.csv(\"question1.csv\")\nx\n\n# Tidy data\nx1 <- boxplot(x$male, x$female, data = x, names = c(\"males\", \"females\"))\nx1\n\n# Statistical test\nt.test(x$male, x$female, data = x, paired = FALSE)\n\n\n\n```\n## Hypotheses\n* H0 : the heart rate does not increase with body temperature\n* H1 : the heart rate does increase with body temperature\n\n## Test assumptions\n* Comparing two, unpaired groups\n\n## Test output\ndf = 116\np-value = 0.5287\n\n## Test interpretation\n* p-value>0.05, therefore accept null hypothesis, and reject alternative hypothesis\n\n```\n\nNote that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.\n",
+    "created" : 1472629317597.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1453937042",
+    "id" : "BB9C63B2",
+    "lastKnownWriteTime" : 1472633111,
+    "last_content_update" : 1472633111196,
+    "path" : "C:/Users/Wits-User/Desktop/Exam/README.Rmd",
+    "project_path" : "README.Rmd",
+    "properties" : {
+        "chunk_rendered_width" : "650",
+        "last_setup_crc32" : "E5A1CB08b7e662bd",
+        "tempName" : "Untitled3"
+    },
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}
